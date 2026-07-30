@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{CM}
+Patrick S.~H. Lewis, Ethan Perez, Aleksandra Piktus, Fabio Petroni, Vladimir
+  Karpukhin, Naman Goyal, Heinrich K{\"{u}}ttler, Mike Lewis, Wen{-}tau Yih,
+  Tim Rockt{\"{a}}schel, Sebastian Riedel, and Douwe Kiela.
+\newblock Retrieval-augmented generation for knowledge-intensive {NLP} tasks.
+\newblock {\em CoRR}, abs/2005.11401, 2020.
+
+\bibitem{TF}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em CoRR}, abs/1706.03762, 2017.
+
+\bibitem{DATA}
+Zaitian Wang, Pengfei Wang, Kunpeng Liu, Pengyang Wang, Yanjie Fu, Chang-Tien
+  Lu, Charu~C. Aggarwal, Jian Pei, and Yuanchun Zhou.
+\newblock A comprehensive survey on data augmentation, 2024.
+
+\end{thebibliography}

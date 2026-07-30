@@ -1,0 +1,2 @@
+clear
+javac UAStringParser.java

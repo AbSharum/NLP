@@ -1,0 +1,171 @@
+\documentclass[10pt,titlepage]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{spverbatim}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage[letterpaper, margin=1.25in]{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usetikzlibrary{trees}
+
+\lstdefinestyle{mystyle}{
+	keywordstyle=\color{blue},
+	commentstyle=\color{red},
+	stringstyle=\color{violet},
+	basicstyle=\fontsize{12}{12},
+	columns=fullflexible,
+	breaklines=true
+}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+\lstset{style=mystyle}
+
+\title{Problem Set 2: Language Models}
+
+\author{Abraham Sharum \\\\ \\ Due Date: September 30, 2024 \\ Class: CS 4343 - Natural Language Processing}	
+
+\lstset{style=mystyle}
+
+
+
+
+
+\begin{document}
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[LE,LO]{\textbf{CS 4343 - Natural Language Processing}}
+	\fancyhead[RO,RE]{\textbf{Language Models}}
+	\fancyfoot{}
+	\fancyfoot[CE,CO]{\textbf{\thepage}}
+	\maketitle
+	
+	\section*{Language Models}
+	\subsection*{Data Structures}
+	
+	\begin{spverbatim}
+		The used data structures consisted of:
+		Dictionaries
+		Lists
+	\end{spverbatim}	
+\subsection*{Implementations:}
+	\begin{spverbatim}
+			Dictionaries: The dictionaries were used to create nested dictionaries in order to store all potential trigrams such as [This: {the: {guy: 20, girl:10}} {Where: {we: 50, I: 20}}] and potential bigrams as [This: {is :20}, {will:30} We: {are: 50} , {will : 20}].
+		
+			Lists: The lists were used when a word/sentence needs to be split, when aggregation needs to occur, or for getting all words from a document. Most implementations of lists were for trivial tasks.
+	\end{spverbatim}	
+\subsection*{Algorithms and Space/Time Complexity Analysis:}
+	\subsubsection*{\textbf{main.py: Contains the following methods, time and space complexity are both O(n)}:}
+	\begin{enumerate}
+		\item Doc of size n loaded into memory \textit{$\theta$(n)} space and time.
+		\item Doc forced lowercase \textit{$\theta$(n)} time.
+		\item Doc split \textit{$\theta$O(n)} time.
+		\item Cache/load 3 dictionaries, the size of the three dictionaries being $V$, $V^2$, and $V^3$ for unigrams, bigrams, and trigrams respectively. While the 2 nested dictionaries potentially have a size of \textit{3V}, where \textit{V} is the lexicon size. Each document is looped through to serialize them to json. This makes runtime and space $6V^3$ (Note: Assuming that the used document is not full of entirely distinct words, $V < n$. This assumption is to be maintained throughout the document for consistent asymptotic complexity analysis). Removing constants the result is $O(V^3)$ time and space.
+		\item With a runtime of \textit{3n+$6V^3$} and \textit{n+$6V^3$} of stored space for the initialization. Given the three methods in main.py that each contain \textit{O(V)} runtime and space, the total runtime is \textit{3n+$6V^3$} and the total space used is \textit{n+$6V^3$}. Thus making the time and space complexities of main \textit{O(n+V)}, despite the assumption made before \textit{$O(V^3)$} is significantly larger than \textit{n}, thus the dominant space and time complexity is $O(V^3)$. Therefore, the asymptotic time and space complexity of main.py is $O(V^3)$.
+	\end{enumerate}
+	
+ 	\subsubsection*{\textbf{main(message,\text{n\_grams}): Contains the following methods, time and space complexity are both O(n)}:}
+ 	
+	\begin{enumerate}
+			\item \textbf{predict\_next(input):}
+				\subitem This method takes the message parameter from main(message,n\_grams) as an argument. This message has a size of k.
+				\subitem Constant loop to add the next 10 words
+				\subitem Each iteration contains a call of the predict() method.
+				\subitem There is also a call of grams.find\_input\_prob which has a time and space complexity of \textit{O(k)}
+				\subitem Given there are potentially 10 predict() calls (method may end due to try/except clause), in which each call of predict has an asymptotic complexity of \textit{O(V)} the space and time complexity is \textit{10V} making the asymptotic time complexity \textit{O(V+k)}.
+			\item \textbf{predict(words):}
+				\subitem This method checks for potential trigram and bigram matches via nested dictionaries all operations are constant.
+				\subitem The time complexity of this method is dominated by the getWord() method call.
+				\subitem It uses constant space as the nested dictionaries are instance variables.
+				\subitem The asymptotic time complexity is \textit{O(V)} and the asymptotic space complexity is \textit{O(1)}.
+			\item \textbf{getWord(possible\_next):}
+				\subitem This method uses the max() function to loop through the frequencies of each word in the posible\_next dictionary and saves/returns the max.
+				\subitem Constant space as the only new instance in memory is a string variable.
+				\subitem Thus, the asymptotic time complexity is \textit{O(V)} and space complexity is \textit{O(1)}.
+	\end{enumerate}
+	
+	\subsubsection*{\textbf{grams.py: Contains the following methods, time and space complexity are both $O(V^3)}:}
+	
+	\begin{enumerate}
+		\item \textbf{tokenize\_doc\_unis(doc): }
+			\subitem This method loops through a loaded doc of size \textit{n}, and creates a dictionary of (key: word) and (value: word frequency). 
+			\subitem Both the space and time complexities of this method are \textit{$\theta(n)$} as it loops to \textit{n} and creates a dictionary of size \textit{V}.
+			\subitem Thus, the asymptotic time and space complexity is \textit{$\theta(n)$}
+		
+		\item \textbf{tokenize\_doc\_bis(doc):} 
+			\subitem This method loops through a loaded doc of size \textit{n}, and creates a dictionary of (key: bigram) and (value: bigram frequency).
+			\subitem Each bigram frequency is smoothed to ensure non-zero probabilities. 
+			\subitem The space complexity of this method is $O(V^2)$ as it loops to \textit{n} and creates a dictionary of size $O(V^2)$.
+			\subitem Thus, the asymptotic time complexity is $\theta(n)$ and the asymptotic space complexity is $O(V^2)$	
+		\item tokenize\_doc\_tris(doc): 
+		\subitem This method loops through a loaded doc of size \textit{n}, and creates a dictionary of (key: trigram) and (value: trigram frequency). 
+		\subitem The space complexity of this method is $O(V^3)$ as it loops to \textit{n} and creates a dictionary of size $O(V^3)$.
+		\subitem Thus, the asymptotic time complexity is $\theta(n)$ and the asymptotic space complexity is $O(V^3)$	
+		
+		\item \textbf{def nested(n\_gram):} 
+		\subitem This method contains an algorhtim to create nested dictonaries given trigrams/bigrams and their frequencies. 
+		\subitem The nested dictionary generated is at most three dictionaries deep meaning the size is 3V.
+		\subitem The space complexity is dominated by the loaded in argument n\_gram which can be the trigram dictionary which has an asymptotic space complexity of $O(V^3)$.
+		\subitem The time complexity is $O(V^3)$ as the trigram dictionary is looped through.
+		\subitem Thus, the asymptotic time and space complexity is $O(V^3)$.
+		
+		\item \textbf{def find\_input\_prob(sentence,unigrams):} 
+		\subitem This method simply loops through a generated sentence and calculates the probaility of each word within it, and saves it to a dictonary of (key:word) and (value:probability).
+		\subitem The time complexity is $\theta(k)$ where k is the size of the generated sentence.
+		\subitem The space complexity is $O(k+V)$ as the lexicon is also loaded via an argument.
+		\subitem Thus, the asymptotic time complexity is $\theta(k)$ and the asymptotic space complexity is $O(k+V)$.
+		
+		\item \textbf{def save\_to\_file(to\_save,file\_name,is\_output):} 
+		\subitem This method saves a passed in data structure to a json file given the passed in name.
+		\subitem The space and time complexities are dominated by the passed in data structure. Given that the trigram dictonary can be passed in the complexities become $O(V^3)$.
+		\subitem The os.makedirs() call recursively walks a file tree given it is only a step forward and a generation of a file it's runtime is negligible.
+		\subitem Thus, the asymptotic complexity for both space and time is $O(V^3)$.
+		
+	\end{enumerate}
+	
+	\textbf{bot.py: Contains the following methods, time and space complexity are both $O(V^3)$}
+	
+	\begin{enumerate}
+		\item Most of the code within this file is methods and classes from the discord API which have constant time and space complexities. The runtime of this file is dominated by the import of the main.py as its' time and space complexities are adopted when instantiated. There are a few loops in which they travel to n however none of the loops are nested meaning for k number of loops to n where k $\leq$ 5, 5n is still asymptotically O(n). Thus, the asymptotic time and space complexity of bot.py is $O(V^3)$.
+	\end{enumerate}
+	
+		\clearpage
+	\section*{Conclusion}
+	
+	\begin{spverbatim}
+		Across multiple tests the trigram model seems to generate slightly more probable sentences than the bigram model. Based on further testing loading the cached dictonaries as opposed to generating them again seems to increase the total speed of the application by roughly a factor of 8. Also due to the nested dictonaries approach, the word generation is near instant as hashing means skipping iteration to find probable trigrams and bigrams.
+	\end{spverbatim}
+	
+	
+	\section*{Deliverable}
+	\subsection*{Command}
+	python3 bot.py
+	Either L to load or S to cache
+	
+	\section*{Output}
+	
+	\subsection*{Output.txt}
+	\lstinputlisting[language=python]{application/output/output.txt}
+	
+	\clearpage
+	
+	\section*{Code}
+	\subsection*{main.py}
+	\lstinputlisting[language=python]{application/main.py}
+	\clearpage
+	\subsection*{bot.py}
+	\lstinputlisting[language=python]{application/bot.py}
+	\clearpage
+	\subsection*{grams.py}
+	\lstinputlisting[language=python]{application/grams.py}
+	
+	
+	
+	
+\end{document}

@@ -1,0 +1,13 @@
+[
+  "Output: the king and queen and her two sons and brothers in",
+  " Trigram Probability: P( the king and queen and her two sons and brothers in) = -60.760579533946874",
+  " P(the) = 0.000328005935212",
+  " P(king) = 1.768806742e-06",
+  " P(and) = 0.00030354345703",
+  " P(queen) = 1.37347315e-07",
+  " P(her) = 3.489494214e-06",
+  " P(two) = 6.9841054e-08",
+  " P(sons) = 3.645469e-09",
+  " P(brothers) = 2.245685e-09",
+  " P(in) = 3.9030124327e-05"
+]

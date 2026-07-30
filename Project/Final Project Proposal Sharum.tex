@@ -1,0 +1,68 @@
+\documentclass[10pt,titlepage]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{spverbatim}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pgfplots}
+\usepackage[letterpaper, margin=1.25in]{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usetikzlibrary{trees}
+
+\lstdefinestyle{mystyle}{
+	keywordstyle=\color{blue},
+	commentstyle=\color{red},
+	stringstyle=\color{violet},
+	basicstyle=\fontsize{12}{12},
+	columns=fullflexible,
+	breaklines=true
+}
+
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}[{\titlerule[0.8pt]}]
+
+\lstset{style=mystyle}
+
+\title{Final Project Proposal}
+
+\author{Abraham Sharum \\\\ \\ Due Date: November 13, 2024 \\ Class: CS 4343 - Natural Language Processing}	
+
+\lstset{style=mystyle}
+
+
+
+\begin{document}
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[LE,LO]{\textbf{CS 4343 - Natural Language Processing}}
+	\fancyhead[RO,RE]{\textbf{Initial Proposal}}
+	\fancyfoot{}
+	\fancyfoot[CE,CO]{\textbf{\thepage}}
+	\maketitle
+	
+	\section*{Research Area}
+	\begin{spverbatim}
+		For the final project the chosen areas of research are sentiment analysis, language generation, and contextual memory. These areas were selected with the intent of combining work from each field in order to create two neural networks that work with each other.
+	\end{spverbatim}
+	\section*{Algorithm}
+	\begin{spverbatim}
+		The algorithim desgin will be mainly comprised of two neural networks: a feedforward nerual network and a transformer nerual network. The feedforward nerual network will classify the sentiment of a given sentence. The produced sentiment and given sentence will be sent to the transformer neural network. The transformer will then generate a new sentence that has the same context as the originial but flips the sentiment. In this project the model will handle binary sentiment (positive/negative).
+	\end{spverbatim}
+	\section*{Intended Results}
+	\begin{spverbatim}
+		I intend to use a sentence that is input by a user and flip the sentiment while maintaining the context. The sentiments will be reduced to positive and negative for simplicty.
+	\end{spverbatim}
+	\section*{Data}
+	\begin{spverbatim}
+		The data I plan to use will consist of two datasets: HuggingFace free IMDB movie reviews dataset and the HuggingFace free WikiText dataset. The problem comes from the need of dual sentiment. There are limited datasets with dual sentiment, an approach to fix this would be to use a pre-trained transformer model to create the opposite sentiment for each entry. The downsides are: the time it takes to make the new data and the doubled dataset size.
+	\end{spverbatim}
+	\section*{Result Evaluation}
+	\begin{spverbatim}
+		For evaluation I plan to refine the classifaction model for relativley high accuracy so that it can be used in a feedback loop to train the generative model. The same classifcation model could also be used to measure how accurate the generative model is once the training is done. This approach also eliminates the need for dual sentiment data as the classification model would tell the generative model if the sentiment was flipped.
+	\end{spverbatim}
+	
+\end{document}

@@ -1,0 +1,17 @@
+Tools
+Vscode
+Jupyter Notebook ext on vsdcoe
+Jupyter Lab
+Python version 3.11
+
+Basics of Python
+Data Structures
+	List: [1,2,3]
+	Set:  {1,2,3}
+	Dictonary: {1:"a", 2:"b", 3:"c"}
+	
+Basic Operations
+	Basic Iteration: for, while, do while. (ranges)
+
+Use Explicit typing in Python
+	def method():

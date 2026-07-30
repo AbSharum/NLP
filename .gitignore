@@ -1,0 +1,12 @@
+.env
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+*.class
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+.DS_Store
+Thumbs.db

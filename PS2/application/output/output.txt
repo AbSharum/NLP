@@ -1,0 +1,79 @@
+[
+  "Output: we are the king henry the king henry the king henry the king",
+  " Bigram Probability: P( we are the king henry the king henry the king henry the king) = -27.677314196639905",
+  " P(we) = 2.4674e-06",
+  " P(are) = 3.5062e-06",
+  " P(the) = 0.0003280059",
+  " P(king) = 1.7688e-06",
+  " P(henry) = 4.19e-08"
+]
+[
+  "Output: we are the only son of mine own part i am not i",
+  " Trigram Probability: P( we are the only son of mine own part i am not i) = -68.70202668862217",
+  " P(we) = 2.467448917e-06",
+  " P(are) = 3.506243115e-06",
+  " P(the) = 0.000328005935212",
+  " P(only) = 3.6761852e-08",
+  " P(son) = 6.7126456e-08",
+  " P(of) = 0.000124866559909",
+  " P(mine) = 2.21712855e-07",
+  " P(own) = 8.6385781e-08",
+  " P(part) = 3.2755977e-08",
+  " P(i) = 0.000168160726624",
+  " P(am) = 9.33929846e-07",
+  " P(not) = 2.305162994e-05"
+]
+[
+  "Output: such that there is the king henry the king henry the king henry",
+  " Bigram Probability: P( such that there is the king henry the king henry the king henry) = -38.086421534136896",
+  " P(such) = 4.741e-07",
+  " P(that) = 4.03037e-05",
+  " P(there) = 6.148e-07",
+  " P(is) = 2.8712e-05",
+  " P(the) = 0.0003280059",
+  " P(king) = 1.7688e-06",
+  " P(henry) = 4.19e-08"
+]
+[
+  "Output: such that there is no more of this world i would not have",
+  " Trigram Probability: P( such that there is no more of this world i would not have) = -68.08155958946652",
+  " P(such) = 4.74071806e-07",
+  " P(that) = 4.0303650466e-05",
+  " P(there) = 6.1479515e-07",
+  " P(is) = 2.8712031008e-05",
+  " P(no) = 3.392009435e-06",
+  " P(more) = 1.060468015e-06",
+  " P(of) = 0.000124866559909",
+  " P(this) = 1.3192277285e-05",
+  " P(world) = 1.07848244e-07",
+  " P(i) = 0.000168160726624",
+  " P(would) = 1.064736187e-06",
+  " P(not) = 2.305162994e-05",
+  " P(have) = 9.316562483e-06"
+]
+[
+  "Output: i want to the king henry the king henry the king henry the",
+  " Bigram Probability: P( i want to the king henry the king henry the king henry the) = -33.05077084768223",
+  " P(i) = 0.0001681607",
+  " P(want) = 1.5e-09",
+  " P(to) = 0.0001416822",
+  " P(the) = 0.0003280059",
+  " P(king) = 1.7688e-06",
+  " P(henry) = 4.19e-08"
+]
+[
+  "Output: i want to send him word you are a fool and a good",
+  " Trigram Probability: P( i want to send him word you are a fool and a good) = -67.88546478414332",
+  " P(i) = 0.000168160726624",
+  " P(want) = 1.536716e-09",
+  " P(to) = 0.000141682195438",
+  " P(send) = 6.945659e-09",
+  " P(him) = 6.976348225e-06",
+  " P(word) = 3.1429966e-08",
+  " P(you) = 6.4591508858e-05",
+  " P(are) = 3.506243115e-06",
+  " P(a) = 7.5582406311e-05",
+  " P(fool) = 2.6433333e-08",
+  " P(and) = 0.00030354345703",
+  " P(good) = 1.69982865e-06"
+]
